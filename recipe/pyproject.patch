@@ -1,0 +1,30 @@
+diff --git a/orig/pyproject.toml b/mod/pyproject.toml
+index d1d83dc..a4662bd 100644
+--- a/orig/pyproject.toml
++++ b/mod/pyproject.toml
+@@ -6,13 +6,9 @@ name = 'scikits-odes-sundials'
+ dynamic = ["version"]
+ description = 'Sundials wrapper module for scikits.odes'
+ readme = "README.md"
+-authors = [
+-    {name = 'B. Malengier', email = 'benny.malengier@gmail.org'},
+-]
+-maintainers = [
+-    {name = 'B. Malengier', email = 'benny.malengier@gmail.org'},
+-]
+-license = {file = 'LICENSE.txt'}
++authors = [{ name = 'B. Malengier', email = 'benny.malengier@gmail.org' }]
++maintainers = [{ name = 'B. Malengier', email = 'benny.malengier@gmail.org' }]
++license = { file = 'LICENSE.txt' }
+ classifiers = [
+     'Development Status :: 5 - Production/Stable',
+     'Environment :: Console',
+@@ -28,7 +24,7 @@ classifiers = [
+     'Programming Language :: Python :: 3.10',
+     'Programming Language :: Python :: 3.11',
+ ]
+-dependencies = ["numpy", "scikits-odes-core"]
++dependencies = ["numpy"]
+ 
+ [project.urls]
+ Homepage = "http://cage.ugent.be/~bm/progs.html"
