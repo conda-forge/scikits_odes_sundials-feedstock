@@ -1,5 +1,5 @@
 {% set name = "scikits_odes_sundials" %}
-{% set version = "3.0.0" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,34 +7,36 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 277d0400812f63a11624565d82f9ecc7497263ebfb9f049e5ca8ab2d025c5621
-  patches:
-    - pyproject.patch
+  sha256: b32fbfb8628d3e7d3d4aec3df9adc394d2323aef125b366caeeaca29c89ed64f
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation 
-  number: 3
+  script: 
+    - export SUNDIALS_INST=$PREFIX           # [not win]
+    - set "SUNDIALS_INST=%LIBRARY_PREFIX%"   # [win]
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation 
+  number: 0
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython <3                              # [build_platform != target_platform]
+    - setuptools                             # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ stdlib("c") }}
     - {{ compiler('c') }}
   host:
     - python
-    - pip
-    - cython <3
-    - libblas
-    - numpy
     - setuptools
-    - sundials >=6,<7
-  run:
+    - cython 
     - numpy
+    - libblas
+    - pip
+    - sundials >=7
+  run:
     - python
-    - sundials >=6,<7
+    - numpy
+    - sundials >=7
 
 test:
   imports:
