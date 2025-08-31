@@ -14,7 +14,7 @@ build:
     - export SUNDIALS_INST=$PREFIX           # [not win]
     - set "SUNDIALS_INST=%LIBRARY_PREFIX%"   # [win]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation 
-  number: 0
+  number: 1
 
 requirements:
   build:
