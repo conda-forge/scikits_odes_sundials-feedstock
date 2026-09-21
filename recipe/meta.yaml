@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 18c35ab2645289226ff16804db082fb91d1d31d3ee05f316d8b012accaea7032
 
 build:
@@ -14,7 +14,7 @@ build:
     - export SUNDIALS_INST=$PREFIX           # [not win]
     - set "SUNDIALS_INST=%LIBRARY_PREFIX%"   # [win]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation 
-  number: 3
+  number: 4
 
 requirements:
   build:
